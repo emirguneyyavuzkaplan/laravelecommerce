@@ -1,4 +1,26 @@
-<!DOCTYPE html>
+{{--}}<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body>
+        <div class="font-sans text-gray-900 antialiased">
+            {{ $slot }}
+        </div>
+    </body>
+</html>--}}
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,7 +34,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/flexslider.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/chosen.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/color-01.css')}}">
@@ -165,9 +186,7 @@
                             <a href="#" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    @if(Cart::count()>0)
-                                        <span class="index">{{Cart::count()}}</span>
-                                    @endif
+                                    <span class="index">4 items</span>
                                     <span class="title">CART</span>
                                 </div>
                             </a>
@@ -493,3 +512,4 @@
 @livewireScripts
 </body>
 </html>
+
