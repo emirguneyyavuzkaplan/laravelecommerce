@@ -5,8 +5,9 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Digital & Electronics</span></li>
+                <li class="item-link"><a href="/" class="link">home</a></li>
+                <li class="item-link"><span>Product Categories</span></li>
+                <li class="item-link"><span>{{$category_name}}</span></li>
             </ul>
         </div>
         <div class="row">
@@ -20,11 +21,8 @@
                 </div>
 
                 <div class="wrap-shop-control">
-
-                    <h1 class="shop-title">Digital & Electronics</h1>
-
+                    <h1 class="shop-title">{{$category_name}}</h1>
                     <div class="wrap-right">
-
                         <div class="sort-item orderby ">
                             <select name="orderby" class="use-chosen" wire:model="sorting" >
                                 <option value="default" selected="selected">Default sorting</option>
@@ -59,20 +57,20 @@
 
                     <ul class="product-list grid-products equal-container">
                         @foreach($products as $product)
-                        <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                            <div class="product product-style-3 equal-elem ">
-                                <div class="product-thumnail">
-                                    <a href="{{route('product.details',['slug'=>$product->slug])}}" title="{{$product->name}}">
-                                        <figure><img src="{{asset('assets/images/products')}}/{{$product->image}}" alt="{{$product->name}}"></figure>
-                                    </a>
+                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="product product-style-3 equal-elem ">
+                                    <div class="product-thumnail">
+                                        <a href="{{route('product.details',['slug'=>$product->slug])}}" title="{{$product->name}}">
+                                            <figure><img src="{{asset('assets/images/products')}}/{{$product->image}}" alt="{{$product->name}}"></figure>
+                                        </a>
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="{{route('product.details',['slug'=>$product->slug])}}" class="product-name"><span>{{$product->name}}</span></a>
+                                        <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
+                                        <a class="btn add-to-cart" href="#" wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->regular_price }})">Add To Cart</a>
+                                    </div>
                                 </div>
-                                <div class="product-info">
-                                    <a href="{{route('product.details',['slug'=>$product->slug])}}" class="product-name"><span>{{$product->name}}</span></a>
-                                    <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
-                                    <a class="btn add-to-cart" href="#" wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->regular_price }})">Add To Cart</a>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -95,10 +93,10 @@
                     <div class="widget-content">
                         <ul class="list-category">
                             @foreach($categories as $category)
-                            <li class="category-item">
+                                <li class="category-item">
 
-                                <a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link">{{$category->name}}</a>
-                            </li>
+                                    <a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link">{{$category->name}}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
