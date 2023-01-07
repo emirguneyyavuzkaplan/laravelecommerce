@@ -43,7 +43,7 @@ class AdminEditProductComponent extends Component
         $this->image=$product->image;
         $this->category_id=$product->category_id;
         $this->newimage=$product->newimage;
-        $this->product_id=$product->product_id;
+        $this->product_id=$product->id;
     }
 
     public function generateSlug()
@@ -74,6 +74,7 @@ class AdminEditProductComponent extends Component
         $product->category_id=$this->category_id;
         $product->save();
         session()->flash('message','Product has been updated successfully');
+
 
     }
 

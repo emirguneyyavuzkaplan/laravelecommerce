@@ -17,7 +17,8 @@
                         @if(Session::has('message'))
                             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                         @endif
-                        <form class="form-horizontal" enctype="multipart/form-data" wire:submit.prevent="updateProduct">
+                        <form class="form-horizontal" enctype="multipart/form-data" method="post" wire:submit.prevent="updateProduct">
+                            @csrf
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Name</label>
                                 <div class="col-md-4">
@@ -33,6 +34,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-4 control-label">Product id</label>
+                                <div class="col-md-4">
+                                    <textarea class="form-control" placeholder="Short Description" wire:model="product_id"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-4 control-label">Short Description</label>
                                 <div class="col-md-4">
                                     <textarea class="form-control" placeholder="Short Description" wire:model="short_description"></textarea>
@@ -43,7 +51,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Description</label>
                                 <div class="col-md-4">
-                                    <textarea class="form-control" placeholder="Description"wire:model="description"></textarea>
+                                    <textarea class="form-control" placeholder="Description" wire:model="description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -120,8 +128,6 @@
                                     </select>
                                 </div>
                             </div>
-
-
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label"> </label>
