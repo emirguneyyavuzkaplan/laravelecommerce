@@ -54,7 +54,7 @@
                     </div>
 
                 </div><!--end wrap shop control-->
-                @if($product->count()>0)
+                @if($products->count()>0)
                 <div class="row">
 
                     <ul class="product-list grid-products equal-container">

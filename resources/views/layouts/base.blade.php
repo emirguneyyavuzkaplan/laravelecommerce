@@ -145,26 +145,10 @@
                     @livewire('header-search-component')
 
                     <div class="wrap-icon right-section">
-                        <div class="wrap-icon-section wishlist">
-                            <a href="#" class="link-direction">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    <span class="index">0 item</span>
-                                    <span class="title">Wishlist</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="wrap-icon-section minicart">
-                            <a href="#" class="link-direction">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    @if(Cart::count()>0)
-                                        <span class="index">{{Cart::count()}}</span>
-                                    @endif
-                                    <span class="title">CART</span>
-                                </div>
-                            </a>
-                        </div>
+                        @livewire('wishlist-count-component')
+
+                        @livewire('cart-count-component')
+
                         <div class="wrap-icon-section show-up-after-1024">
                             <a href="#" class="mobile-navigation">
                                 <span></span>
@@ -489,6 +473,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js" integrity="sha512-Y+0b10RbVUTf3Mi0EgJue0FoheNzentTMMIE2OreNbqnUPNbQj8zmjK3fs5D2WhQeGWIem2G2UkKjAL/bJ/UXQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdn.tiny.cloud/1/g0q1ip8kz20zlwenxnddl1lg31akffqmhhtmlxc6f3904hfe/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @livewireScripts
 
 @stack('scripts')
