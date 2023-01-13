@@ -49,7 +49,7 @@ Route::get('/shop',ShopComponent::class,);
 
 Route::get('/cart',CartComponent::class)->name('product.cart');
 
-Route::get('checkout',Checkoutcomponent::class);
+Route::get('checkout',Checkoutcomponent::class)->name('checkout');
 
 Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
 
