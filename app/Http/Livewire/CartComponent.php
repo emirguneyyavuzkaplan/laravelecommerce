@@ -138,7 +138,7 @@ class CartComponent extends Component
         if (session()->has('coupon'))
         {
             session()->put('checkout',[
-                'discount='=>$this->discount,
+                'discount'=>$this->discount,
                 'subtotal'=>$this->subtotalAfterDiscount,
                 'tax'=>$this->taxAfterDiscount,
                 'total'=>$this->totalAfterDiscount
@@ -148,7 +148,7 @@ class CartComponent extends Component
         else
         {
             session()->put('checkout',[
-                'discount='=>0,
+                'discount'=>0,
                 'subtotal'=>Cart::instance('cart')->subtotal(),
                 'tax'=>Cart::instance('cart')->tax(),
                 'total'=>Cart::instance('cart')->total()
