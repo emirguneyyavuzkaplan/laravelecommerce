@@ -102,8 +102,9 @@ class AdminEditProductComponent extends Component
         if($this->newimage)
         {
             $imageName=Carbon::now()->timestamp.''.$this->newimage->extension();
-            $product->newimage=$imageName;
-            $this->image->storeAs('products',$imageName);
+            $this->newimage->storeAs('products',$imageName);
+            $product->image=$imageName;
+
         }
 
         $product->category_id=$this->category_id;
@@ -112,6 +113,13 @@ class AdminEditProductComponent extends Component
 
 
     }
+
+    // if ($this->newimage)
+    //        {
+    //            $imagename=Carbon::now()->timestamp.'.'.$this->newimage->extension();
+    //            $this->newimage->storeAs('sliders',$imagename);
+    //            $slider->image=$imagename;
+    //        }
 
 
     public function render()

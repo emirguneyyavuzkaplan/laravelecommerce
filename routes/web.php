@@ -10,6 +10,8 @@ use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\WishlistComponent;
 use App\Http\Livewire\ThankYouComponent;
+
+//Admin Controller
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
@@ -27,6 +29,12 @@ use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
+use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
+
+//User Controller
+use App\Http\Livewire\User\UserOrdersComponent;
+use App\Http\Livewire\User\UserOrderDetailsComponent;
+
 
 
 /*
@@ -67,6 +75,9 @@ Route::get('/thank-you',ThankYouComponent::class)->name('thankyou');
 //FOR USER  or Customer
 Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::get('/user/dashboard',UserDashboardComponent::class)->name('user.dashboard');
+    Route::get('/user/orders',UserOrdersComponent::class)->name('user.orders');
+    Route::get('/user/orders/{order_id}',UserOrderDetailsComponent::class)->name('user.orderdetails');
+
 });
 //FOR ADMİN
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function (){
@@ -92,6 +103,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
    Route::get('/admin/coupon/edit/{coupon_id}',AdminEditCouponsComponent::class)->name('admin.editcoupon');
 
    Route::get('/admin/orders',AdminOrderComponent::class)->name('admin.orders');
+   Route::get('/admin/orders/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
 });
 
 

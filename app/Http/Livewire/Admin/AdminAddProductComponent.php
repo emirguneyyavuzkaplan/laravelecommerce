@@ -93,6 +93,12 @@ class AdminAddProductComponent extends Component
 
     }
 
+// $imagename=Carbon::now()->timestamp.'.'.$this->image->extension();
+//        $this->image->storeAs('sliders',$imagename);
+//        $slider->image=$imagename;
+//
+//
+
 
     public function render()
     {
