@@ -10,6 +10,7 @@ use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\WishlistComponent;
 use App\Http\Livewire\ThankYouComponent;
+use App\Http\Livewire\ContactComponent;
 
 //Admin Controller
 use App\Http\Livewire\User\UserDashboardComponent;
@@ -30,10 +31,13 @@ use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 
 //User Controller
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
+use App\Http\Livewire\User\UserReviewComponent;
+use App\Http\Livewire\User\UserChangePasswordComponent;
 
 
 
@@ -71,12 +75,18 @@ Route::get('/wishlist',WishlistComponent::class)->name('product.wishlist');
 
 Route::get('/thank-you',ThankYouComponent::class)->name('thankyou');
 
+Route::get('/contact-us',ContactComponent::class)->name('contact');
+
+
 
 //FOR USER  or Customer
 Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::get('/user/dashboard',UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/orders',UserOrdersComponent::class)->name('user.orders');
     Route::get('/user/orders/{order_id}',UserOrderDetailsComponent::class)->name('user.orderdetails');
+    Route::get('/user/review/{order_item_id}',UserReviewComponent::class)->name('user.review');
+    Route::get('/user/change-password',UserChangePasswordComponent::class)->name('user.changepassword');
+
 
 });
 //FOR ADMİN
@@ -104,6 +114,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 
    Route::get('/admin/orders',AdminOrderComponent::class)->name('admin.orders');
    Route::get('/admin/orders/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
+   Route::get('/admin/contact-us',AdminContactComponent::class)->name('admin.contact');
 });
 
 
