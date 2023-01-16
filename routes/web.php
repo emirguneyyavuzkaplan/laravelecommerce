@@ -32,6 +32,7 @@ use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\Admin\AdminContactComponent;
+use App\Http\Livewire\Admin\AdminSettingComponent;
 
 //User Controller
 use App\Http\Livewire\User\UserOrdersComponent;
@@ -114,7 +115,11 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 
    Route::get('/admin/orders',AdminOrderComponent::class)->name('admin.orders');
    Route::get('/admin/orders/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
+
+
    Route::get('/admin/contact-us',AdminContactComponent::class)->name('admin.contact');
+
+   Route::get('/admin/settings',AdminSettingComponent::class)->name('admin.settings');
 });
 
 
