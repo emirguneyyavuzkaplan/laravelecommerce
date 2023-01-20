@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\OrderMail;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Shipping;
@@ -9,6 +10,7 @@ use App\Models\Transaction;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use mysql_xdevapi\Exception;
 
@@ -123,7 +125,7 @@ class CheckoutComponent extends Component
         }
 
 
-        $order=new Order();
+        $order = new Order();
         $order->user_id=Auth::user()->id;
         $order->subtotal=session()->get('checkout')['subtotal'];
         $order->discount=session()->get('checkout')['discount'];
@@ -168,7 +170,7 @@ class CheckoutComponent extends Component
                 's_zipcode'=>'required',
             ]);
 
-           $shipping=new Shipping();
+            $shipping=new Shipping();
             $shipping->order_id=$order->id;
             $shipping->firstname=$this->s_firstname;
             $shipping->lastname=$this->s_lastname;
@@ -251,9 +253,12 @@ class CheckoutComponent extends Component
                 session()->flash('stripe_error',$e->getMessage());
                 $this->thankyou=0;
             }
+
         }
+        $this->sendOrderConfirmationMail($order);
 
     }
+
     public function resetCart()
     {
         $this->thankyou=1;
@@ -272,6 +277,14 @@ class CheckoutComponent extends Component
         $transaction->status=$status;
         $transaction->save();
     }
+
+
+    public function sendOrderConfirmationMail($order)
+    {
+        Mail::to($order->email)->send(new OrderMail($order));
+    }
+
+
 
     public function veriyfyForCheckout()
     {
