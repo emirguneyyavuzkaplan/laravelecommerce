@@ -44,13 +44,6 @@
         <div class="row">
             <div class="topbar-menu-area">
                 <div class="container">
-                    <div class="topbar-menu left-menu">
-                        <ul>
-                            <li class="menu-item" >
-                                <a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="topbar-menu right-menu">
                         <ul>
 
@@ -89,6 +82,11 @@
                                                 <li class="menu-item">
                                                     <a title="Categories" href="{{route('admin.categories')}}">Categories</a>
                                                 </li>
+
+                                                <li class="menu-item">
+                                                    <a title="Attributes" href="{{route('admin.attributes')}}">Attributes</a>
+                                                </li>
+
                                                 <li class="menu-item">
                                                     <a title="Products" href="{{route('admin.products')}}">All Products</a>
                                                 </li>
@@ -164,7 +162,7 @@
                 <div class="mid-section main-info-area">
 
                     <div class="wrap-logo-top left-section">
-                        <a href="index.html" class="link-to-home"><img src="{{asset('assets/images/logo-top-1.png')}}" alt="mercado"></a>
+                        <a href="{{route('home')}}" class="link-to-home"><img src="{{asset('assets/images/logo-top-1.png')}}" alt="mercado"></a>
                     </div>
 
                     @livewire('header-search-component')
@@ -205,9 +203,9 @@
                             <li class="menu-item home-icon">
                                 <a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
                             </li>
-                            <li class="menu-item">
+                            {{--}}<li class="menu-item">
                                 <a href="about-us.html" class="link-term mercado-item-title">About Us</a>
-                            </li>
+                            </li>--}}
                             <li class="menu-item">
                                 <a href="/shop" class="link-term mercado-item-title">Shop</a>
                             </li>

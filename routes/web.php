@@ -33,6 +33,9 @@ use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminSettingComponent;
+use App\Http\Livewire\Admin\AdminAttributesComponent;
+use App\Http\Livewire\Admin\AdminAddAttributesComponent;
+use App\Http\Livewire\Admin\AdminEditAttributesComponent;
 
 //User Controller
 use App\Http\Livewire\User\UserOrdersComponent;
@@ -60,7 +63,7 @@ use App\Http\Livewire\User\UserEditProfileComponent;
 //});
 
 
-Route::get('/',HomeComponent::class);
+Route::get('/',HomeComponent::class)->name('home');
 
 Route::get('/shop',ShopComponent::class,);
 
@@ -124,6 +127,10 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
    Route::get('/admin/contact-us',AdminContactComponent::class)->name('admin.contact');
 
    Route::get('/admin/settings',AdminSettingComponent::class)->name('admin.settings');
+
+   Route::get('/admin/attributes',AdminAttributesComponent::class)->name('admin.attributes');
+   Route::get('/admin/attributes/add',AdminAddAttributesComponent::class)->name('admin.add_attributes');
+   Route::get('/admin/attributes/edit/{attribute_id}',AdminEditAttributesComponent::class)->name('admin.edit_attributes');
 });
 
 
